@@ -1,0 +1,23 @@
+| Peripheral       | Pinout on ESP32 |
+| ---------------- | --------------- |
+| P1 Stick VRX     | GPIO34          |
+| P1 Stick VRY     | GPIO35          |
+| P1 Button A      | GPIO32          |
+| P1 Button B      | GPIO33          |
+| P2 Stick VRX     | GPIO36          |
+| P2 Stick VRY     | GPIO39          |
+| P2 Button A      | GPIO25          |
+| P2 Button B      | GPIO26          |
+| SD CS            | GPIO5           |
+| SD SCK           | GPIO18          |
+| SD MOSI          | GPIO23          |
+| SD MISO          | GPIO19          |
+| 3.3V             | 3.3V            |
+| GND              | GND             |
+
+
+P1 is controller 1
+P2 is controller 2
+Board used in the project: ESP-WROOM-32 (ESP32-DevKitC)
+link (Polish site): https://botland.com.pl/esp32/8893-esp32-wifi-bt-42-platforma-z-modulem-esp-wroom-32-zgodny-z-esp32-devkit-5904422337438.html
+Warning voltage depends on components used please read documentation/description of the component before trying to wire everything to esp32
