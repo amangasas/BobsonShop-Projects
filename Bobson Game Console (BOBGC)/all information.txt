@@ -1,0 +1,139 @@
+----------------------------------------------------------------
+| this is one large list of EVERYTHING that can be in the text |
+----------------------------------------------------------------
+- - - - - INFO ABOUT CONSOLE - - - - -
+This console is made completely from scratch as i always wanted to make portable console that isn't limited to its software but hardware but because of normal boards with cpu`s being a lot more expensive then i thought i wondered if if its possible to make console out of basic thing like esp32 that is often used for sensors or robotics then in gaming. This proves that even with smallest hardware it is in fact possible to run games and that games can be fun without all of that raytracing and 200gb of storage. That also brings the question: "why?" well its for my adhd at school where phones are baned and the main thing on brakes between lessons is fights so small pocket console with several games on SD card to choose from with multiplayer would solve some issue especially if it would be cheap for people to afford and easy to fix if something isn't working properly. so yes this console is completely modular and open source anybody can make games without dev kit or some kind of license i dont care i care about my project being available to everybody and having library of games without limitation that also means that internals of the console can be switched for example from wroom32 to more powerful s3 with psram and bigger display or adding double joystick and 4 button controller instead of my 2 button single joystick one that is the point of doing hardware give simple device with modular parts sadly that isn't a thing for long time this is why im wasting my time for this to either fail or be a success its also free and you can in fact mod firmware and games as long as you give credit to original author of the game/firmware. as i said in the main readme on this GitHub page feel free to donate everything is free and took long time to master it.
+
+what does this console have?
+double gamepad support (player depends on port)
+SD/micro SD card storage
+single esp32 board
+640x480 tft screen (can be used with 320x240 but needs downscaling logic to be made)
+more nerdy specs
+240MHZ double core cpu
+4MB flash
+512KB of SRAM (NOT PSRAM)
+esp-wroom32 dev-kitC
+640x480 SPI screen (no touch required)
+
+- - - - - RULES FOR POSTING GAMES - - - - -
+function required here is list:
+- resolution (required as not everybody uses same screen which results in upscaling/downscaling)
+- require menu button functionality (to revert back to main menu)
+- touch compatibility (it its required to use touch screen or not to play the game)
+- player count (1-4 for default could be more as of giving gamepad to other person like blackjack)
+- gamepad structure (could be double stick double button could be 4x4 keypad could be single stick with quad button it strongly depends)
+- hardware requirements (for example how much does it weight or if psram is used not all boards are the same)
+- any additional hardware (buzzers, leds, potentiometers, etc. That requires information)
+
+- - - - - SYSTEM LOGIC FOR GAME DEVELOPMENT - - - - -
+this console is GRID BASED
+example: Tetris grid size 10×20 cell size 24×24
+that also includes multiple grid system could be used in situation of text for example tetris has score + storage box + next block preview + main play space that could give us option to add layers of grid systems that will give us also custom background and more resolutions per game then just 1 so big simple objects could be simple compared to text that requires 1x1 or 2x2 pixels cell size in grid 
+layer schematic:
+Layer 0 → Background
+Layer 1 → Playfield
+Layer 2 → Text
+of course could be used completely other way by developer its just 0 is bottom and 2 is top (3 layers because of hardware limitation)
+
+- - - - - SD CARD LAYOUT - - - - -
+/games
+  /tetris
+    game.json (example)
+    level.bin (example)
+    assets.bin (example)
+  /snake
+  /pong
+/saves
+/config
+
+
+- - - - - WIRING - - - - -
+| Peripheral       | Pinout on ESP32 |
+| ---------------- | --------------- |
+| MENU             | GPIO27          |
+| P1 Stick VRX     | GPIO34          |
+| P1 Stick VRY     | GPIO35          |
+| P1 Button A      | GPIO32          |
+| P1 Button B      | GPIO33          |
+| P2 Stick VRX     | GPIO36          |
+| P2 Stick VRY     | GPIO39          |
+| P2 Button A      | GPIO25          |
+| P2 Button B      | GPIO26          |
+| SD CS            | GPIO5           |
+| SD SCK           | GPIO18          |
+| SD MOSI          | GPIO23          |
+| SD MISO          | GPIO19          |
+| 3.3V             | 3.3V            |
+| 5V               | VIN             |
+| GND              | GND             |
+
+Buttons are going to GND pin
+P1 is controller 1
+P2 is controller 2
+Board used in the project: ESP-WROOM-32 (ESP32-DevKitC)
+link (Polish site): https://botland.com.pl/esp32/8893-esp32-wifi-bt-42-platforma-z-modulem-esp-wroom-32-zgodny-z-esp32-devkit-5904422337438.html
+Warning voltage depends on components used please read documentation/description of the component before trying to wire everything to esp32
+
+- - - - - CURRENT GAME LIST (Official) - - - - -
+pacman
+pong 
+tetris
+breakout 
+snake 
+Space Shooter
+Match-3 Puzzles (like Candy Crush for example)
+Endless Runner
+pinball
+blackjack 
+tic tac toe
+flappy bird 
+
+- - - - - CURRENT GAME LIST (Community) - - - - -
+none but for now :)
+
+- - - - - SUPPORTED FUNCTIONS - - - - -
+[BobsonGFX]
+void begin() { Serial.println("BEGIN"); }
+void init() { Serial.println("INIT"); }
+void setRotation(uint8_t r) { Serial.printf("ROT %d\n", r); }
+
+// Drawing functions
+void drawLine(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t color)
+void drawRect(uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color)
+void fillRect(uint16_t x0, uint16_t y0, uint16_t w, uint16_t h, uint16_t color)
+
+// Circle functions
+void drawCircle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t color)
+void fillCircle(uint16_t x0, uint16_t y0, uint16_t r, uint16_t color)
+
+// Triangle functions
+void drawTriangle(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color)
+void fillTriangle(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_t color)
+
+// Text functions
+void setCursor(int16_t x, int16_t y) { Serial.printf("CUR %d %d\n", x, y); }
+void setTextColor(uint16_t c) { Serial.printf("TXTCLR %u\n", c); }
+void setTextColor(uint16_t c, uint16_t bg) { Serial.printf("TXTCLR %u %u\n", c, bg); }
+void setTextSize(uint8_t s) { Serial.printf("TXTSZ %d\n", s); }
+void setTextWrap(bool w) { Serial.printf("WRAP %d\n", w ? 1 : 0); }
+
+// String drawing function
+void drawString(const char *str, int16_t x, int16_t y) { Serial.printf("STR %d %d %s\n", x, y, str); }
+
+
+- - - - - COMPONENTS - - - - -
+For console
+- 1 x SD or Micro SD card reader
+- 1 x esp32 wroom32 board
+- 1 x button
+For controller
+- 1 x analog joystick
+- 2 x button
+not included: jumper wires and breadboard (as of pcb option those are NOT included and CAN be replaced)
+
+- - - - - ADDITIONAL TOOLS - - - - -
+- png to txt converter
+its used for converting png textures/images into txt for console which saves memory of board but is slower and any larger textures then 128x128 might slow down the game rendering
+- serial screen
+this is used with BobsonGFX library for complete replacement of normal tft screen used for testing different resolutions and/or used for debugging also used if there is no screen avaible at the moment of building the console

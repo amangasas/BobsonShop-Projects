@@ -1,0 +1,2 @@
+python bobson_screen_emulator.py
+pause
