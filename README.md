@@ -8,5 +8,5 @@ If you’d like to support my work, you can do so here:
 
 ## Projects
 
-- **Bobson Colorchanger (BOBC)** — *WORK IN PROGRESS*  
-- **Bobson Game Console (BOBGC)** — *WORK IN PROGRESS* (⚠ DO NOT UPLOAD, NOT READY YET)
+- **Bobson Colorchanger (BOBC)** — *Not possible with current setup*  
+- **Bobson Game Console (BOBGC)** — *Left. Fell free to remix this*
