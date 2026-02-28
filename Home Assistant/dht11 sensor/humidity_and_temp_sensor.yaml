@@ -1,0 +1,40 @@
+esphome:
+  name: esp32-dht11
+  friendly_name: ESP32 DHT11
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+logger:
+
+api:
+
+ota:
+
+wifi:
+  ssid: "Network Name"
+  password: "Network Password"
+
+  ap:
+    ssid: "ESP32-DHT11-Fallback"
+    password: "fallbackpassword"
+
+captive_portal:
+
+sensor:
+  - platform: dht
+    pin:
+      number: GPIO33
+      mode: INPUT_PULLUP
+    model: DHT11
+    temperature:
+      name: "Room Temperature"
+      id: room_temperature
+      accuracy_decimals: 1
+    humidity:
+      name: "Room Humidity"
+      id: room_humidity
+      accuracy_decimals: 1
+    update_interval: 15s

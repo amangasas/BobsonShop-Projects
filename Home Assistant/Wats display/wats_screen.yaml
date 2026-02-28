@@ -1,0 +1,64 @@
+esphome:
+  name: power_display
+  friendly_name: Power Display
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+logger:
+
+api:
+
+ota:
+
+wifi:
+  ssid: "Network Name"
+  password: "Network Password"
+
+  ap:
+    ssid: "PowerDisplayFallback"
+    password: "12345678"
+
+captive_portal:
+
+i2c:
+  sda: 18
+  scl: 19
+  scan: true
+
+font:
+  - file: "gfonts://Roboto"
+    id: font_small
+    size: 10
+
+sensor:
+  - platform: homeassistant
+    id: id1
+    entity_id: sensor.1
+
+  - platform: homeassistant
+    id: id2
+    entity_id: sensor.2
+
+  - platform: homeassistant
+    id: id3
+    entity_id: sensor.3
+
+  - platform: homeassistant
+    id: id4
+    entity_id: sensor.4
+
+display:
+  - platform: ssd1306_i2c
+    model: "SSD1306 128x32"
+    address: 0x3C
+    lambda: |-
+      // Top row
+      it.printf(0, 0, id(font_small), "PC %3.0fW", id(id1).state);
+      it.printf(64, 0, id(font_small), "NAS %3.0fW", id(id2).state);
+
+      // Bottom row
+      it.printf(0, 16, id(font_small), "CNC %4.0fW", id(id3).state);
+      it.printf(64, 16, id(font_small), "P1S %3.0fW", id(id4).state);
