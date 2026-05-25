@@ -3,7 +3,7 @@
 <br> Im very happy to hear any recommendations to add into this (if even required)
   
 If you’d like to support my work, you can do so here:  
-- 👉 **https://ko-fi.com/bobsonshop** 
+- 👉 **https://ko-fi.com/bobsonshop**  Warning do NOT use ko-fi it does not work at the moment
 <br> Crypto:  
 - Ravencoin: **RUAd5MzdtVwKt1PzVeywiCYqpUivVitmXv**
 - Litecoin: **ltc1qe2q5azm2esclh42dl0x37we4vq4hc9yn22lfpm**
