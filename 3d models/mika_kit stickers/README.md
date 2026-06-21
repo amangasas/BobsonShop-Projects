@@ -8,6 +8,10 @@
 > The stickers were sourced from Telegram and converted into 3D models by me  
 > (same as my *Mika_Kit* keychains).
 
+All of those will be published on Printables and after i will 3d print them they will be also avaible on makerworld
+<br> Printables: @Kozak145_2166820
+<br> Makerworld: @kozak145
+
 ---
 
 **Sticker 1**  
