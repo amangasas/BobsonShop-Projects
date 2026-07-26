@@ -152,6 +152,7 @@ seeking for people dumb enough to sacrifice themselves for its hungers
 
 24.fuel consumption display
 -for both generators and cars
+-% per minute
 
 25.better weapon hud
 -ammo left (update only after fired and reloaded do not check all the time in loop)
@@ -168,11 +169,14 @@ seeking for people dumb enough to sacrifice themselves for its hungers
 -reconnect button after disconnected 
 
 
-28.
--
+28.physics
+-also editor fantasy to add physics to the object and toggle them for example with explosion/switch
+-could be basic sphere box cylinder capsule with /physics spawn NameOfTheOject
+-would require basic rigidbody push that is often shipped with basic 3d first person scene to have ability for pushing the objects around|
+-physics gun (optional) to grab them like garrysmod
 
-29.
--
+29.multi threading 
+-currently game runs on single thread limiting a lot of stuff good implementation is multi threading and proper rendering on gpu making performance boost
 
 30.
 -
