@@ -1,0 +1,178 @@
+notes: fix healthbar ratio
+
+✅ - done
+⚠️ - point/subpoint in work (or later work)
+🚹 - unknwon status waiting for checkup
+
+✅ 1.minimap
+-can be turned on/off 
+-gets bigger with press of can key (if key held its big if released its small)
+-configureable range
+-tracks player position and rotation
+⚠️ -has gps (if point set it searches roads and gives navigation) 
+
+✅ 2.healthbars above zombies
+-have procentage shown
+-change colors based on the health
+
+3.random events
+-helicopter that flies above map and if under the location visible from outside (so not under a roof or in building and visible trough windows/doors) then shoots zombies generally randomized location per map (main named locations).         if it sees a player it drops a lot of stuff like medical items or food, the helicopter scans whole cities to search for survivors, it is friendly and is part of the Coalition , probably flew here from europe 
+-possibly more waiting for more ideas
+
+✅ 4.damage hud
+-corners and sides get red when health is below 30% and less health more red they get until health is at 0 and its automatically disabled so it doesn't collide with the original death screen
+
+5.custom npc villages 
+-possibly custom stores per class (for example cook selling food or medic selling bandages)
+-if village set with /setvillage it will give option to select 4 points of area that is counted as village where npcs can wander around in (requires new pathfinding first so they wont walk into walls)
+
+🚹 6.new path finding system (currently: none fuck nelson for using paid)
+-requires finding walkable area and finding better path then walking straight into a wall (current behavior)
+7.bandits 
+-they kill players
+-they drive around in cars (either single or convoy)
+-if player is on road they could try to crash into the players car get out and start shooting (especially if in convoy and they detect player going their direction they could create road blocks)
+-bandit bases spawn with them (they are timed and could have items based on what type of base it is for example medic based would have medical stuff like bandages from the loot table same with military or civilian)
+-if killed they drop gun/weapon held
+
+✅ 8.multi killing
+-1 swing of melee weapon damages few zombies at once (limit of 5 at once)
+-it activates on the right click that is already a "critical" hit that uses energy (delete the old system and put new one using the swing animation for items so if first attack has swing animation then use first attack if second use second)
+
+9.electricity
+-generators: solar panles (work only in day and per hour so full sun hour so around 12 is giving the maximum compared to sunset or sunrise) wind tubines (works all the time but energy is unstable for example night will give more wind power then sunny day) fuel generator (already in game requires changes)
+-power consumption: currently not much besides oil rigs so required of more ideas for energy items that are actually useful
+-power system: generators have power output and whole wattage system where things wont work if network doesn't have enough wats (power consumption needs to stay under currently produced otherwise whole network crashes and requires manual restart with placeable fusebox that is a reset lever) to connect anything it requires placing cables (infinite range but requires placing a check point for examply every 10-20 meters like a cable hook/pole) only things that are directly touching cable are connected 
+-solar panels and wind turbines can be crafted from scrap metal in electrical manufacturers that consume energy and material to output generators while normal gas generator (already in game) and cables are crafted in normal inventory crafting (normal recipe)
+-solar panels, wind turbines, cables, battery storage, fuse boxes, lights, electrical automatic doors and power levers could be found in electrical bandit bases or solar panels or wind turbines with automatic doors (security doors) with cables and small battery storage can be found in normal bases
+-item list:
+> generator (generates stable 50W of energy output and industrial generates stable 100W of energy)
+> solar panels (small - 5W max medium - 15W max large - 30W max)
+> wind turbines (small - 5W max  medium - 15W max  large - 30W max)
+> cables (around 20 meters per hook requires 1 cable per connection on infinite range)
+> cable hooks and poles (supports for cables every 20 meters or less)
+> fuse box (a lever that is required to be activated when power network crashes from over usage/battery storage runout)
+> battery storage: (there is no limit of troughput if you generate 50W on big battery then it takes 1 unturned hour to charge but on small battery its 5 times the capacity so only takes 12 unturned minutes Unturned takes exactly 48 minutes in real-world time so 1 hour is 30 seconds in real life)
+small: 10Wh - 1 scrap + 1 car battery 
+medium: 25Wh - 3 scrap + 2 car batteries 
+big: 50Wh - 6 scrap + 4 car batteries 
+XL: 100Wh - only found in electrical bandit bases
+> levers (turns on and off power useful for for example lights or backup power storage) (those only switch on/off manually so no power consumption)
+> electrical automatic doors (security doors that only open for trusted players for example if player puts them down then all players from owner player group can walk trough them any other player/bandit cant same if spawned in bandit base players cannot walk trough it only bandits can) (constant 2W so its keeping it closed and detects entities if not powered then automatically opens)
+> lights (i dont think i need to explain how lights work) (those are configure able based on size good if kept as custom configureable script for prefabs so can be defined straight in editor as those can wary from 1 to even 100W of power consumption when on and 0 when off)
+> pumps (pump water implemented later on with water system upgrade) (when off - 0W when on around 10W of consumption if output is full and doesn't do any work then 1W idle as of struggling to pump any further but still trying like in real world)
+> electrical manufacturers (produce green energy sources like solar panels wind turbines and batteries or general items like turrets electrical doors cables power hooks and polls using energy) (things NOT crafted in the electrical manufacturer: oil rigs and fuel generators as of them being already in game and just required an edit or using just entirely making new generators and oil rigs from scratch which is no ideal if those already work) (consumes around 50W while manufacturing but 0 when idle)
+> turrets (infinite ammo turrets that shoot zombies/unfriendly players/bandits but require constant power consumption for searching zombies and shooting dont require reloading or giving constant ammo though do note trusted players include villages made by the player so it shouldn't attack village npcs) (while shooting/idle its just all the time stable 5W of usage to be on if switched off then 0W)
+> oil rigs (already in game produce gasoline from the ground using energy which generates more fuel then consumes fuel by burning power which is around 1.1x multiplier and produces infinite power source if combined with fuel storage and generators so if for example its 1W per liter burned then oil rig produces 1.1L per 1W of course wats per liter are higher this is just example)
+> day/night detectors (they use 1W while in work and detect if its night or day so it could be set to activate power on night to power lights only at night and turn off at day saving power consumption)
+> turbines (any kind of steam going trough them generates electricity more steam per second generates more energy with 500W limit per turbine and 100 liters per minut input)
+> compressor (compresses scrap into uranium or radium using 100W in process)
+> general manufacturer (crafts items selected) (uses 25W when in work and 0 when idle)
+> shore pump (consumes 10W while operational generates around 25L/RLM)
+
+-many more can come so better to keep it friendly for additions so like stable system for generators and power consumption only few actual items require non stable power consumption like pump which takes 1W on output full and 10W when output isn't full most of them like lights just use constant power consumption and dont require custom lights code or turret code because those just take energy when powered on same with crafting recipe its the best to keep it possibly to define in editor on prefab instead of 10+ scripts doing same thing just different names
+-possibility to connect into city grid to power whole city (mainly vending machines which could be 10W each and lights which idk i guess could be 5-10W each so then you can have lighting in cities so for example if there is around 15 street lamps and 6 vending machines it would use around 135-210W of required energy)
+
+10.water system (or more likely fluid system)
+automatic transfer of fuel and water for example from rain barrels to water tanks and from oil rigs to fuel tanks and to generators oil rigs automatically output the fuel but to move fluid from container it it required to use pump (that consumes electricity so even better if connected with electricity system) you connect pipes to pump and it pumps fluid from container 
+-items:
+> pipe (to transport fluid)
+> pump (to pump fluid from tanks to other places)
+> shore pump (to pump liquid from the shore)
+> pump station (added from car trailers to pump fuel into fuel trailer)
+>boiler (burns wood to produce steam 1 wood has 50L worth of steam from water and generates 5L/RLM)
+
+11.car trailers (trailers for cars may help a lot also different sizes + possible station for fluid transfer using pumps and pipes for for example fuel to load or unload trailer)
+-types:
+> fuel
+> item
+-station for fluid to load or unload fuel from the trailer
+
+12.movement update (current one is shit)
+-sliding
+-mantling
+-bunny hop (toggleable default is off default keybind is numpad 0 and is changeable in custom bobson settings menu)
+
+13.custom settings (Bobson settings menu)
+-required as of many custom ideas that are already made and may come it is quite required to just make separate clean version of whatever bullshit we make
+
+14.vr support
+-bring back support for vr but for survival
+-ability to throw items
+-shoot guns and aim
+-throwing melee weapon gives dmg to players and zombies
+-climbing ladders
+-many more functions from unturned ported to vr + some other features from other games like half life alyx
+
+15.Entities
+lore: 
+the one that was born between multiverses
+once drifting in void it got sucked into one multiverse
+but one day incident made it escape and hunt in the deepest pits of darkness
+waiting for its pray in the labs known as its last home
+seeking for people dumb enough to sacrifice themselves for its hungers
+-Alternate version, Scorpion 7 experiments that turned people into anomalies and ceazy creatures, they mamaged to escape the labs and now roam the canadian wilderness hunting animals and other people, or still remained in the ruins of the labs where stroger experiments kill weaker ones like in poppy playtime
+
+16.radiation system
+-compared to old system of using different types of deadzones this one could be distance based to certain source of radiation (for example is specified that its a uranium for nuclear power plants it has other levels then radiation labs that have plution or radium leaks)
+-for example from 50M it would be less radiation level then from 1m so it would subtract less immunity when far from radiation source generally requiring hazmat suit to survive
+-possible integrity with energy system to implement nuclear reactors by compressing scrap in compressor for radium or uranium that could be used in nuclear reactor building for power (requiring water for cooling to spin turbines so also integration with fluid system)
+-depending on fuel 1 uranium can output around 1000L of steam by consuming 1000L of water while single fuel cell outputs around 10 liters per minute for single water cell (so 1 uranium in single fuel cell can last 100 minutes for single water cell though those are RLM - Real Life Minutes not unturned ones) for radium its only 2L/RLM for single water cell so uranium is 5 times more efficient but 10 times more scrap consuming (5 scrap for 1 radium 50 scrap for 1 uranium)
+-tile based building of 3 types:
+> uranium (fuel generating heat for water cells)
+> radium (fuel generating heat for water cells)
+> water (have water input and steam output while consuming heat energy from surrounding fuel cells)
+-no control this game doesn't need to be that advanced to have boron control rod managing but if water isn't supplies fast enough and there are cells without water then it will lead into meltdown (explosion) and spread of nuclear waster (cesium) which can be turned back into scrap in compressor (cesium isn't spread as items but collectable objects because that games makes items disappear so collectable objects wont disappear requires hazmat suit though otherwise radiation and carrying radioactive waste will kill player) 
+
+17.Bank UI
+-bank for storing bitcoin (requires mod) we use that to trade on server for stuff and generally after some time 500 bitcoins is hard to store in chests so bank could be used for infinite storage
+-ids for bitcoins:
+>single bitcoin - 60309
+>stack of 5 bitcoins - 60310
+-just basic ui that stores info on the server per player how much he has coins in the bank could use already existing folder system for per player inventory in server (not really much useful in singleplayer anyway)
+
+18.mp4 radio
+-uploads mp4 files directly to server directory to play mp4 files for everyone (audio streaming) compared to normal radio which requires music packs and sucks
+
+19.view rendering
+-Renders only things seen on camera others are not visible saving performance
+
+20.framegeneration and upscaling (dlss and fsr)
+-required for any gain of performance atp
+
+21.Drifting
+-when space is clicked it allows drifting just like in forza or other racing games
+
+22.realistic destruction
+-when objects get shot/beaten/exploded/hit by a car or object they deform and break like in Teardown making more realistic destruction (optional feature for objects not on all its preferable one for use for example in mission where its necessary to break a wall)
+
+23.inventory quick sort
+-sorts inventory optionally with option to define which sizes go where if avaible
+-possibly also for any other storage like cars or crates
+
+24.fuel consumption display
+-for both generators and cars
+
+25.better weapon hud
+-ammo left (update only after fired and reloaded do not check all the time in loop)
+
+26.blueprints
+-for buildings helping to build bigger bases faster
+-holograms (to indicate what is being build)
+-rotation (very important)
+-required materials list (actually required)
+-when building it could be placed hologram instead of building whole thing at once and it could be builded by hand until complete (so its like hologram but you can place it and then build 1 by 1 for example floors or walls because there might not be enough inventory space for bigger builds)
+
+27.ping graph and multiplayer stuff
+-ping graph (requires bobturned menu for binding key
+-reconnect button after disconnected 
+
+
+28.
+-
+
+29.
+-
+
+30.
+-
