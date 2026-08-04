@@ -9,6 +9,6 @@ If you’d like to support my work, you can do so here:
 - Duino-coin: bobson
 
 <br> Projects:
-<br>Bobson game console (Feel free to edit this and do whatever you want with it)
+<br>Bobson game console (revived)
 <br>3d models (Folder for 3d models in case i didnt share them on any platform)
 <br>Home Assistant (Folder for all HA projects)
